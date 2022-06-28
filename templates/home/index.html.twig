@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+{% block title %}
+    {{ parent()}} - accueil
+{% endblock %}
+
+
+{% block content %}
+<div class="row mt-5 justify-content-center text-center">
+    <h1> Dernier article publié </h1>
+    <div>
+        <h3>Titre : {{dernierArticle.titre}} </h3>  <!-- On récupère le titre  -->
+        <h6>Publié le  : {{ dernierArticle.dateDeCreation | date("d/m/y \à H\\hi")}} </h6> <!-- On récupère la date avec le filtre   -->
+        <h6>Date de modification de l'article : </h6>
+        {% if dernierArticle.titre is not null %}
+            <h6>Auteur : {{ dernierArticle.titre }} </h6>
+        {% endif %}
+        <h6>auteur de l'article : </h6>
+        <h6>contenu de l'article : {{dernierArticle.contenu | slice(0, 150)}} ....<a href=""> lire la suite </a> </h6>
+    </div>
+</div>
+{% endblock %}

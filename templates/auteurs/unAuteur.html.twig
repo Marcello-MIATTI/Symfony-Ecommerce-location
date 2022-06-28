@@ -1,0 +1,11 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ auteur.nom }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ auteur.prenom }}</h6>
+    <p class="card-text">{{ auteur.biographie }}</p>
+  </div>
+</div>
+{% endblock content %}

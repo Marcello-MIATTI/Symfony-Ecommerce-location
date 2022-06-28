@@ -1,0 +1,9 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    {{ parent()}} 
+{% endblock %}
+{% block content %}
+    <h1> Ajout d'un arcticle </h1>
+    {{ form( formArticle )}}
+{% endblock %}

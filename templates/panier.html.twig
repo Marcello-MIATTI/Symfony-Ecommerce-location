@@ -1,0 +1,9 @@
+<h1></h1>
+{% for produit in panier %}
+    <ul>
+    <li>{{ produit.id}} </li>
+    <li>{{ produit.titre}} </li>
+    <li>{{ produit.description}} </li>
+    <li>{{ produit.prix}} </li>
+    </ul>
+{% endfor %}

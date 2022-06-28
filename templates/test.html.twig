@@ -1,0 +1,9 @@
+<h1> Salut {{ nom }} {{ prenom }} je suis dans la page test </h1>
+
+<h3> Liste de personnes </h3>
+
+<ul>
+    {% for personne in identite %}
+    <li>{{personne.nom ~''~ personne.prenom}}</li></ul>
+    {% endfor %}
+</ul>
