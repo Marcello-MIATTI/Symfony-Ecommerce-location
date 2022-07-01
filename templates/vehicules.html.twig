@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+ <div class="row d-flex justify-content-center text-center">
+ <h1>Liste des vehicules</h1>
+{% for vehicule in vehicules %}
+<div class="card" style="width: 18rem;">
+  
+  
+  <div class="card-body">
+    <h5 class="card-title">{{vehicule.titre}}</h5>
+    <p class="card-text">{{vehicule.description}}</p>
+  </div>
+  <img src="{{ asset('photosVehicules/' ~ vehicule.photo) }}" class="card-img-top" alt="{{vehicule.titre}}">
+    <a href="{{ path("update_vehicule", {id: vehicule.id} ) }}"><i class="fas fa-edit mx-1 text-success"></i></a>
+    <a href="{{ path("delete_vehicule", {id: vehicule.id} ) }}"><i class="fas fa-trash mx-1 text-danger" onclick="return confirm('êtes vous sûr de vouloir supprimer l\'auteur ?') " ></i></a>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{vehicule.model}}</li>
+    <li class="list-group-item">{{vehicule.prixjournalier}}</li>
+  </ul>
+  <a href="#" class="btn btn-primary">Réserver</a>
+</div>   
+{% endfor %}
+</div>  
+{% endblock %}
+
+

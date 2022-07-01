@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block content %}
+    <h1>Admin vehicles</h1>
+    <table class="text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th class="table-dark">Id</th>
+                    <th class="table-dark">Titre</th>
+                    <th class="table-dark">Marque</th>
+                    <th class="table-dark">Modèle</th>
+                    <th class="table-dark">Desc</th>
+                    <th class="table-dark">Photo</th>
+                    <th class="table-dark">Prix/jour</th>
+                    <th class="table-dark">Date d'enregistrement</th>
+                    <th class="table-dark">Action</th>
+                </tr>
+        </thead>
+    <tbody>            
+        {% for vehicule in vehicules %}
+        <tr>
+            <td> {{vehicule.titre}}</td>
+            <td> {{vehicule.marque}}</td>
+            <td> {{vehicule.model}}</td>
+            <td> {{vehicule.description | slice (0.50)}} ...</td>
+            <td> <img class="img-thumbnail" src="{{ asset('photosVehicules/' ~ vehicule.photo)}}" alt="{{vehicule.photo}}"></td>
+            <td> {{vehicule.prixjournalier}}</td>
+            <td> {{vehicule.dateEnregistrement | date("d/m/Y \à H\\hi") }}</td>
+            <td><a href="{{ path("adminUpdateVehicule", {id: vehicule.id} ) }}"><i class="fas fa-edit mx-1 text-success"></i></a></td>
+            <td><a href="{{ path("adminDeleteVehicule", {id: vehicule.id} ) }}"><i class="fas fa-trash mx-1 text-danger"
+            onclick="return confirm('Etes-vous sûr de vouloir supprimer l\'article ?')"></i></a></td>
+        </tr>
+        {% endfor %}
+   </tbody>
+
+{% endblock %}

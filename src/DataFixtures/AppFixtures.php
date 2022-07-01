@@ -2,10 +2,8 @@
 
 namespace App\DataFixtures;
 
-use DateTime;
-use App\Entity\Articles;
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
@@ -13,13 +11,6 @@ class AppFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        for ($i=1 ; $i<= 10 ; $i++){
-            $article = new Articles();
-            $article-> setTitre("mon titre $i")
-                    -> setContenu("mon contenu $i")
-                    -> setDateDeCreation(new DateTime("now"));
-            $manager->persist($article);
-        }
 
         $manager->flush();
     }

@@ -1,47 +1,60 @@
 {% extends "base.html.twig" %}
+
 {% block body %}
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ path("app_home")}}"> Accueil </a>
+                    <a class="nav-link" href="{{ path("home")}}"> Accueil </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=""> Connexion </a>
+                    <a class="nav-link" href="{{ path("ajoutvehicule")}}"> Ajouter vehicle </a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href=""> Inscription </a>
+                    <a class="nav-link" href="{{ path("vehicules")}}"> vehicles </a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href=""> Deconnexion </a>
-                </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href=""> Profil </a>
                 </li>
-               
+                {% if is_granted ('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path("app_logout")}}"> Deconnexion </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path("app_login")}}"> Connexion </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path("app_register")}}"> inscription </a>
+                </li>
+                {% endif %}
+                
+               {% if is_granted ('IS_AUTHENTICATED_FULLY') and is_granted ('ROLE_ADMIN')%}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Admin
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="{{ path("ajout-article")}}">Ajout article</a></li>
-                        <li><a class="dropdown-item" href="{{ path("ajout-auteurs")}}">Ajout auteurs</a></li>
-                        <li><a class="dropdown-item" href="{{ path("articles")}}">Les articles</a></li>
-                        <li><a class="dropdown-item" href="{{ path("auteurs")}}">Liste des auteurs</a></li>
+                        <li><a class="dropdown-item" href="{{ path("ajoutvehicule")}}">Ajout vehicule</a></li>
+                        <li><a class="dropdown-item" href="{{ path("adminVehicules")}}">Les vehicules</a></li>
                     </ul>
+                {% endif %}
                 </div>
             </ul>
-
         </div>
+        <p class="mr-sm-2 text-white"> Bonjour Marcello</p>
     </nav>
 </header>
 
 <main class="container mb-5 pb-5">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center">
+            <p>{{ message }} </p>
+        </div>
+    {% endfor %}
+
 
     {% block content %}
     	{# ce block restera vide dans le layout, c'est là ou viendera s'inserer le contenu propre à chaque page #}
@@ -63,4 +76,6 @@
         </div>
     </nav>
 </footer>
+{% block final_js %}
+{% endblock %}
 {% endblock body %}

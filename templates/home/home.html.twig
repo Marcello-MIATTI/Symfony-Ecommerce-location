@@ -1,0 +1,17 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Agence de location de voiture </h1>
+</div>
+<div class="row my-auto align-items-center text-center" style="height: 80vh">
+    <div class="div-img-home col-6 text-center align-items-center">
+        <img class="img-home img-responsive" src="{{ asset('images/listeVehicule.jpg') }}" />
+        <h4>Voir la liste des vehicles</h4>
+    </div>
+    <div class="div-img-home col-6 text-center align-items-center">
+        <img class="img-home img-responsive" src="{{ asset('images/locationVehicule.jpg')}}"/>
+       <h4>Louer un vehicle</h4>
+    </div>
+</div> 
+{% endblock %}

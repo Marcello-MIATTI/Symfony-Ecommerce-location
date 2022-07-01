@@ -1,0 +1,14 @@
+1) Crée le projet symfony "Agenceocation" ( assurez-vous qu'il soit bien crée et fonctionnel)
+
+2) Cree la base de donnée ( agence_loc)
+
+3) Cree l'entité "Véhicle" avec les informations suivantes :
+    - titre (string, 255, not null)
+    - marque (string, 100, not null)
+    - model (srring, 100 , not null)
+    - description (text, not null)
+    - photo (string, 255, nullable)
+    - prixJournalier (interger, not null)
+    - dateEnregistrement ( datetime, not null)
+
+    4) Creez toutt le crud ncessaire pour le vehicles

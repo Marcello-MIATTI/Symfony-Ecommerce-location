@@ -1,13 +1,8 @@
-app_home:
-    path: /
-    controller: App\Controller\HomeController::index
-
 controllers:
     resource: ../src/Controller/
     type: attribute
 
-article_ajout:
-    path: /article_{id}
-    controller: App\Controller\ArticleController::unArticle
-    requirements:
-        id: '\d+'
+app_home:
+    path: /
+    controller: App\Controller\VehiculeController::index
+
